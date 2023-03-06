@@ -1,0 +1,2 @@
+Getting tsconfig.json: npx tsc --init
+Using nodemon with TS: npm install --save-dev ts-node nodemon
