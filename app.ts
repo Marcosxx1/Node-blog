@@ -1,25 +1,35 @@
+
 import path from 'path';
 import express, { Request, response, Response } from 'express';
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'))
-})
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'pages')));
 
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'about.html'))
+app.get('/', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, 'pages/index.html'));
+}) 
+
+app.get('/about', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, 'pages/about.html'))
+}) 
+
+app.get('/post', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, 'pages/post.html'))
 })
 
-app.get('/contact', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'contact.html'))
+app.get('/index', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, 'pages/index.html'))
 })
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.get('/contact', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, 'pages/contact.html'))
 })
+
+export default app;
+
 
 
 

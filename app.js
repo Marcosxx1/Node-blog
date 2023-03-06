@@ -6,19 +6,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+app.use(express_1.default.static(path_1.default.join(__dirname, 'pages')));
 app.get('/', (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, 'index.html'));
+    res.sendFile(path_1.default.resolve(__dirname, 'pages/index.html'));
 });
 app.get('/about', (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, 'about.html'));
+    res.sendFile(path_1.default.resolve(__dirname, 'pages/about.html'));
+});
+app.get('/post', (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, 'pages/post.html'));
+});
+app.get('/index', (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, 'pages/index.html'));
 });
 app.get('/contact', (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, 'contact.html'));
+    res.sendFile(path_1.default.resolve(__dirname, 'pages/contact.html'));
 });
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+exports.default = app;
 /* import http from 'http';
 import fs from 'fs';
 
